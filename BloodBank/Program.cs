@@ -13,12 +13,14 @@ namespace BloodBank
             while(true)
             {
                 Console.WriteLine("Please choose from following \n Choose D to Donate \n " +
-                    "Choose R to receive \n Choose U to Update \n Choose Q to Quit");
+                    "Choose R to receive \n Choose U to Update \n Choose Q to Quit \n Choose P to PrintDetails");
                 string userInput = Console.ReadLine();
 
                 if (userInput == "D")
                 {
-                    bloodBank.MakingDonation();
+                    Console.WriteLine("Enter the Member ID");
+                    var DonorId = Console.ReadLine();
+                    bloodBank.MakingDonation(DonorId);
                 }
 
                 if (userInput == "R")

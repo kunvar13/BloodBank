@@ -16,6 +16,8 @@ namespace BloodBank
             lastName = LastName;
             memberBloodType = MemberBloodType;
             dateOfBirth = DateOfBirth;
+            Id = Guid.NewGuid();
+            
 
         }
         public string firstName { get; set; }
@@ -23,6 +25,7 @@ namespace BloodBank
         public BloodType memberBloodType { get; set; }
         public DateTime dateOfBirth { get; set; }
 
+        public Guid Id { get; set; }
         public string FullName
         {
             get
