@@ -13,9 +13,26 @@ namespace BloodBank
             NumberOfTimesDonated = numberOfTimesDonated;
         }
 
-        public DateTime lastDonated { get; set; }
+        public DateTime lastDonated { get; private set; }
 
-        public int NumberOfTimesDonated { get; set; }
+        public int NumberOfTimesDonated { get; private set; }
+
+        public void Donorupdate ()
+        {
+            if ((DateTime.Now - lastDonated).Days < 40)
+            {
+                throw new Exception("\n Donor cant donate the blood yet");
+            }
+
+            lastDonated = DateTime.Now;
+            NumberOfTimesDonated++;
+                
+            
+            
+
+            
+
+        }
 
         public override void SendUpdate()
         {

@@ -20,7 +20,18 @@ namespace BloodBank
                 {
                     Console.WriteLine("Enter the Member ID");
                     var DonorId = Console.ReadLine();
-                    bloodBank.MakingDonation(DonorId);
+                    try
+                    {
+                        Guid DonorIdGuid = Guid.Parse(DonorId);
+                        bloodBank.MakingDonation(DonorIdGuid);
+
+                    }
+
+                    catch (Exception e)
+                    {
+                        Console.WriteLine($"Exception handeled{e.Message}");
+                    }
+                    
                 }
 
                 if (userInput == "R")

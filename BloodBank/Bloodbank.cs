@@ -11,6 +11,7 @@ namespace BloodBank
             _members = new List<Member>();
             _donor = new List<Donor>();
             _receiver = new List<Receiver>();
+            _donation = new List<Donation>();
 
             Donor FirstDonor = new Donor("Kalpesh", "Kunvar", abPos, new DateTime(1987, 05, 18), new DateTime(2021, 01, 01), 2);
             Console.WriteLine(FirstDonor.Id);
@@ -26,6 +27,7 @@ namespace BloodBank
         private List<Member> _members;
         private List<Donor> _donor;
         private List<Receiver> _receiver;
+        private List<Donation> _donation;
         
         
         BloodType abPos = new BloodType("AB", '+');
@@ -34,39 +36,43 @@ namespace BloodBank
         BloodType ONeg = new BloodType("O", '-');
 
         
-        public void MakingDonation(string DonorId)
+        public void MakingDonation(Guid DonorId)
             
         {
-            //Find Donor
-            
-            for (int i=0; i<_donor.Count; i++)
-            {
-                
+            Donor _Donor = null;
 
-                if (_donor[i].Id.ToString() == DonorId)
+            for (int i = 0; i < _donor.Count; i++)
+            {
+
+
+                if (_donor[i].Id == DonorId)
                 {
-                    Console.WriteLine($"Found the Donor {_donor[i].FullName}" );
+                    Console.WriteLine($"Found the Donor {_donor[i].FullName}");
+                    Donation _donation = new Donation();
+                    string detailOfDonation = "";
+                    detailOfDonation += $"Donation Id is {_donation.DonationId} \n";
+                    detailOfDonation += $" Donor - {_donor[i].FullName} made a donation \n";
+                    detailOfDonation += $" Bloodgroup {_donor[i].memberBloodType.bloodGroup} \n";
+                    detailOfDonation += $"Time {_donor[i].lastDonated} \n";
+                    _donor[i].Donorupdate();
+                    Console.WriteLine(detailOfDonation);
+
+
                 }
 
-                //else
-                //{
-                //    Console.WriteLine("Enter the Correct Id");
-                //}
+                else
+                {
 
-                //Make donation
+                    Console.WriteLine($"Donor with {DonorId} not found");
 
-               Donation _donation = new Donation();
-                string detailOfDonation = "";
-                detailOfDonation += _donation.DonationId;
-                detailOfDonation += $" Donor - {_donor[i].FullName} made a donation \n";
-                detailOfDonation += $" Bloodgroup {_donor[i].memberBloodType.bloodGroup} \n";
-                detailOfDonation += $"Time {_donor[i].lastDonated}";
-                Console.WriteLine(detailOfDonation);
-
-
-
-
+                }
             }
+            
+
+
+
+
+            
 
 
 
