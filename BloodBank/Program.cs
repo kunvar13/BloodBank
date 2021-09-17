@@ -6,7 +6,8 @@ namespace BloodBank
     {
         static void Main(string[] args)
         {
-            var bloodBank = new Bloodbank();
+            var DonorStorageArgs = new DonorList();
+            var bloodBank = new Bloodbank(DonorStorageArgs);
 
            
 
@@ -23,7 +24,8 @@ namespace BloodBank
                     try
                     {
                         Guid DonorIdGuid = Guid.Parse(DonorId);
-                        bloodBank.MakingDonation(DonorIdGuid);
+                        Donation donation =  bloodBank.MakingDonation(DonorIdGuid);
+                        Console.WriteLine($"The Donation Id is {donation.DonationId}");
 
                     }
 

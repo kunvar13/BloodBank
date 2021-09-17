@@ -4,15 +4,14 @@ using System.Text;
 
 namespace BloodBank
 {
-    class Donation
-    {
-        public Donation()
+    public class Donation
         {
-            DonationId = Guid.NewGuid();
+      
+       public Guid DonationId { get; set; }
 
-        }
+        public Donor _donor {get; set;}
 
-        public Guid DonationId { get; set; }
+        public DateTime lastDonated { get; set; }
 
 
     }
